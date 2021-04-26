@@ -29,28 +29,17 @@ function isGameWon(word, guesses) {
 }
 
 function isGameLost(word, guesses) {
-  // return true als er 7 letters zijn die niet overeenkomen in word
-  // return false als er minder dan 7 letters niet overeenkomen met word
-  // check of letter in word voorkomt; nee? ==> sum++
-  // als sum++ === 7 ==> game is verloren ==> true
+  let sum = 0;
+  for (let i = 0; i < guesses.length; i++) {
 
-  // Define the length or 'word'
-  for (let i = 0; i < word.length; i++) {
-    // define variable that counts wrong letters
-    let falseLetters = 0;
-    let gameLost = false;
-    // count false Letters to see if the game is lost
-    if(!guesses.includes(word[i])) {
-      falseLetters++;
+    if(!word.includes(guesses[i])){
+       sum++;
     }
-    // return true if Wrong guesses equals 7
-    if(falseLetters === 7) {
-      return gameLost = true;
-    }
-    return gameLost = false;
   }
-
+  return sum >= 7;
 }
+
+
 
 module.exports = {
   displayWordSoFar: displayWordSoFar,
